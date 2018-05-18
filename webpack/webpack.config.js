@@ -50,7 +50,7 @@ module.exports = {
                         options: {
                             importLoaders: 2,
                             modules: true,
-                            localIndentName: '[name]__[local]'
+                            localIdentName: '[name]__[local]'
                         }
                     },
                     {
@@ -69,10 +69,15 @@ module.exports = {
                                         flexbox: 'no-2009'
                                     }
                                 ),
-                                require('postcss-px2rem')(
+                                require('postcss-px-to-viewport')(
                                     {
-                                        remUnit: 75,
-                                        dpr: 2
+                                        viewportWidth: 750,
+                                        viewportHeight: 1334,
+                                        unitPrecision: 3,
+                                        viewportUnit: 'vw',
+                                        selectorBlackList: ['.ignore'],
+                                        minPixelValue: 1,
+                                        mediaQuery: false
                                     }
                                 )
                             ],
