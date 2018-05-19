@@ -5,7 +5,7 @@ import {App} from './container';
 
 
 // console.log(process.env.NODE_ENV);
-
+global.__DEVELOPMENT__ = process.env.NODE_ENV === 'development';
 const vDomTree = (
     <Router>
         <Switch>

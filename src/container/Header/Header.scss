@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  height: 80px;
+  background: #323232;
+}
+
+.nav {
+  width: 20%;
+  box-sizing: border-box;
+  float: left;
+  line-height: 76px;
+  text-align: center;
+  font-size: 18px;
+  text-decoration: none;
+  color: #fff;
+  border-top: 5px solid transparent;
+  transition: all .2s linear;
+}
+.active {
+  color: #eec513;
+  border-top: 5px solid #eec513;
+}
