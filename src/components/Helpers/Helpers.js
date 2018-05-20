@@ -1,4 +1,3 @@
-import formatDate from 'date-fns';
 
 export class Helpers {
     static dateFromNow(strDate) {
