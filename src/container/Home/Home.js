@@ -1,8 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import {Http,ArticleTitle,Helpers} from '../../components';
+import * as styles from './Home.scss';
 const http = new Http();
 export class Home extends React.Component {
+
+    static propTypes = {
+      tab: PropTypes.string.isRequired
+    };
+    static defaultProps = {
+        tab: 'all'
+    };
+
     constructor(props) {
         super(props);
         this.state = {
@@ -38,10 +48,11 @@ export class Home extends React.Component {
     }
 
     getData() {
+        const {tab} = this.props;
         const {page} = this.state;
         http.get('/topics',{
             params: {
-                tab:'all',
+                tab,
                 limit: 15,
                 page
             }
@@ -77,7 +88,9 @@ export class Home extends React.Component {
             )
         }else {
             return (
-                <div>正在加载···</div>
+                <div className={styles.loading}>
+                    <img src="../../../public/assets/images/loading.gif" alt=""/>
+                </div>
             )
         }
 
