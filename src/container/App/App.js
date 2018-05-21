@@ -16,7 +16,12 @@ export class App extends React.Component {
             <div className={styles.app} >
                 <Header location={location}/>
                 <div className={styles.content}>
-                    <Route exact path="/home" component={Home}/>
+                    <Route exact path="/" component={ ()=>(<Home tab="all"/>)} />
+                    <Route exact path="/home" component={ ()=>(<Home tab="all"/>)} />
+                    <Route exact path="/good" component={ ()=>(<Home tab="good"/>)} />
+                    <Route exact path="/ask" component={ ()=>(<Home tab="ask"/>)} />
+                    <Route exact path="/share" component={ ()=>(<Home tab="share"/>)} />
+                    <Route exact path="/job" component={ ()=>(<Home tab="job"/>)} />
                 </div>
             </div>
         )

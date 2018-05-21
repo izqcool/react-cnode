@@ -18,14 +18,14 @@ export class Header extends React.Component {
                 active: true
             },
             {
-                type: 'essence',
-                path: '/essence',
+                type: 'good',
+                path: '/good',
                 text: '精华',
                 active: false
             },
             {
-                type: 'question',
-                path: '/question',
+                type: 'ask',
+                path: '/ask',
                 text: '问答',
                 active: false
             },
@@ -36,8 +36,8 @@ export class Header extends React.Component {
                 active: false
             },
             {
-                type: 'recruitment',
-                path: '/recruitment',
+                type: 'job',
+                path: '/job',
                 text: '招聘',
                 active: false
             }

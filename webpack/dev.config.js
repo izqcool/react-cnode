@@ -4,7 +4,7 @@ const webpackCommon = require('./webpack.config');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 module.exports = webpackMerge(webpackCommon,{
-    // devtool:'inline-source-map',
+    devtool:'inline-source-map',
     mode: 'development',
     plugins: [
         new DefinePlugin({
