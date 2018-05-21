@@ -40,4 +40,21 @@ export class Helpers {
         }
 
     }
+
+    static isScorllDown() {
+        const bodyScrollTop = !!document.body ? document.body.scrollTop : 0;
+        const documentScrollTop = !!document.documentElement ? document.documentElement.scrollTop : document.documentElement;
+        const scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
+
+        const bodyScrollHeight = !!document.body ? document.body.scrollHeight : 0;
+        const documentScrollHeight = !!document.documentElement ? document.documentElement.scrollHeight : 0;
+        const scrollHeight = (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight;
+
+        const windowHeight = document.compatMode == "CSS1Compat" ? document.documentElement.clientHeight : document.body.clientHeight;
+        if(scrollHeight - scrollTop - windowHeight === 0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
