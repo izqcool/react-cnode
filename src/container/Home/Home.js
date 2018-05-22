@@ -38,10 +38,14 @@ export class Home extends React.Component {
         const afterPos = document.documentElement.scrollTop;
         const disTop = afterPos - beforePos;
         this.setState({
-            scrollTop: afterPos,
-            page: this.state.page + 1
+            scrollTop: afterPos
         });
         if(Helpers.isScorllDown() && disTop > 0) {
+            const newPage = this.state.page + 1;
+            console.log(newPage);
+            this.setState({
+                page: newPage
+            });
             this.getData();
         }
 
@@ -78,12 +82,13 @@ export class Home extends React.Component {
     }
 
     render() {
+        const {history} = this.props;
         const {dataLoaded,datas} = this.state;
 
         if(dataLoaded) {
             return (
                 <div>
-                    <ArticleTitle datas={datas}/>
+                    <ArticleTitle datas={datas} history={history}/>
                 </div>
             )
         }else {
