@@ -57,4 +57,11 @@ export class Helpers {
             return false;
         }
     }
+
+    static randomColor() {
+        const defaultColors = ['#2d3e50','#27ae61','#16a086','#3598db','#e67f22','#d35400'];
+        const randomNum = Math.floor(Math.random()*(5+1));
+        return defaultColors[randomNum];
+
+    }
 }
