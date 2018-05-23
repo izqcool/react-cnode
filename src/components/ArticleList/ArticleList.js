@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {} from 'react-router-dom';
 import {Helpers} from '../Helpers';
-import * as styles from './ArticleTitle.scss';
+import * as styles from './ArticleList.scss';
 
 const tabMap = {
   'share':'分享',
@@ -11,7 +10,7 @@ const tabMap = {
   'job':'招聘'
 };
 
-export class ArticleTitle extends React.Component {
+export class ArticleList extends React.Component {
 
 
 
@@ -42,6 +41,8 @@ export class ArticleTitle extends React.Component {
     onGoArticle(id) {
         const {history} = this.props;
         history.push(`/topic/${id}`);
+        // console.log(history);
+        {/*<Redirect to={`/topic/${id}`}/>*/}
     }
 
     render() {

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as _ from 'lodash';
-import {Http,ArticleTitle,Helpers} from '../../components';
-import * as styles from './Home.scss';
+import {Http,ArticleList,Helpers,Loading} from '../../components';
 const http = new Http();
 export class Home extends React.Component {
 
@@ -88,14 +87,12 @@ export class Home extends React.Component {
         if(dataLoaded) {
             return (
                 <div>
-                    <ArticleTitle datas={datas} history={history}/>
+                    <ArticleList datas={datas} history={history}/>
                 </div>
             )
         }else {
             return (
-                <div className={styles.loading}>
-                    <img src="../../../public/assets/images/loading.gif" alt=""/>
-                </div>
+                <Loading/>
             )
         }
 
