@@ -1,0 +1,16 @@
+.back {
+  position: fixed;
+  left: 30px;
+  bottom: 40px;
+  z-index: 10000 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #000;
+  opacity: .5;
+  color: #fff;
+  font-size: 1.2em;
+}
