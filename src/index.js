@@ -1,8 +1,7 @@
 import React from 'react';
-import 'normalize.css';
 import '../public/css/markdown.css';
 import ReactDom from 'react-dom';
-import 'font-awesome';
+import './vendors';
 import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import {App,Article} from './container';
 

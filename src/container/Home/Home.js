@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import {Http,ArticleList,Helpers,Loading} from '../../components';
 const http = new Http();
+
+const routeList = ['/','/home','/good','/ask','/share','/job'];
+
 export class Home extends React.Component {
 
     static propTypes = {
@@ -25,7 +28,7 @@ export class Home extends React.Component {
 
     componentDidMount() {
         this.setState({
-            scrollTop:document.body.scrollTop
+            scrollTop:document.body.scrollTop,
         });
         this.getData();
 
@@ -33,15 +36,16 @@ export class Home extends React.Component {
     }
 
     shouldUpdate() {
+        const {history} = this.props;
+        const pathName = history.location.pathname;
         const beforePos = this.state.scrollTop;
         const afterPos = document.documentElement.scrollTop;
         const disTop = afterPos - beforePos;
         this.setState({
             scrollTop: afterPos
         });
-        if(Helpers.isScorllDown() && disTop > 0) {
+        if(Helpers.isScorllDown() && disTop > 0 && _.includes(routeList,pathName)) {
             const newPage = this.state.page + 1;
-            console.log(newPage);
             this.setState({
                 page: newPage
             });
