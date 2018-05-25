@@ -41,6 +41,14 @@ export class Helpers {
 
     }
 
+    static dateFormat(strDate) {
+        const date = new Date(strDate);
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        return `${month}/${day}/${year}`;
+    }
+
     static isScorllDown() {
         const bodyScrollTop = !!document.body ? document.body.scrollTop : 0;
         const documentScrollTop = !!document.documentElement ? document.documentElement.scrollTop : document.documentElement;
