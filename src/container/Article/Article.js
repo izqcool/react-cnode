@@ -45,12 +45,13 @@ export class Article extends React.Component {
 
 
     render() {
+        const {history} = this.props;
         const {dataLoaded,data} = this.state;
 
         if(dataLoaded) {
             return (
                 <div className={styles.article} >
-                    <ArticleHeader avatarUrl={data.author.avatar_url} title={data.title} createAt={data.create_at}/>
+                    <ArticleHeader avatarUrl={data.author.avatar_url} title={data.title} createAt={data.create_at} name={data.author.loginname} history={history}/>
                     <div className={styles.contnet} dangerouslySetInnerHTML={{__html: data.content}}>
 
                     </div>

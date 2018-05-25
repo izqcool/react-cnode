@@ -41,8 +41,6 @@ export class ArticleList extends React.Component {
     onGoArticle(id) {
         const {history} = this.props;
         history.push(`/topic/${id}`);
-        // console.log(history);
-        {/*<Redirect to={`/topic/${id}`}/>*/}
     }
 
     render() {

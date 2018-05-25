@@ -3,7 +3,7 @@ import '../public/css/markdown.css';
 import ReactDom from 'react-dom';
 import './vendors';
 import {HashRouter as Router, Route, Switch} from 'react-router-dom';
-import {App,Article} from './container';
+import {App,Article,User} from './container';
 
 
 // console.log(process.env.NODE_ENV);
@@ -18,6 +18,7 @@ const vDomTree = (
             <Route exact path="/share" component={App} />
             <Route exact path="/job" component={App} />
             <Route exact path="/topic/:id"  component={Article}/>
+            <Route exact path="/user/:username"  component={User}/>
         </Switch>
     </Router>
 

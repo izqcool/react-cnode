@@ -11,19 +11,25 @@ export class ArticleHeader extends React.Component {
         this.state = {
             dataLoaded: false
         };
-        this.onGoArticle = this.onGoArticle.bind(this);
+        this.onGoUser = this.onGoUser.bind(this);
     };
 
     static propTypes = {
         avatarUrl: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
-        createAt: PropTypes.string.isRequired
+        createAt: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        history: PropTypes.object.isRequired
+
+
     };
 
     static defaultProps = {
+        history: {},
         avatarUrl: '',
         title: '',
-        createAt: ''
+        createAt: '',
+        name: ''
     };
 
 
@@ -32,9 +38,11 @@ export class ArticleHeader extends React.Component {
 
     }
 
-    onGoArticle(id) {
-        const {history} = this.props;
-        history.push(`/topic/${id}`);
+
+    onGoUser() {
+
+        const {name,history} = this.props;
+        history.push(`/user/${name}`)
     }
 
     render() {
@@ -43,7 +51,7 @@ export class ArticleHeader extends React.Component {
         return (
             <div className={styles.container} style={{backgroundColor: Helpers.randomColor()}}>
                 <div className={styles.left}>
-                    <div className={styles.author}>
+                    <div className={styles.author}  onClick={this.onGoUser}>
                         <img src={avatarUrl} alt=""/>
                     </div>
                 </div>
