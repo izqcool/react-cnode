@@ -37,7 +37,7 @@ export class User extends React.Component {
         if(dataLoaded) {
             return (
                 <div className={styles.user}>
-                    <UserHeader/>
+                    <UserHeader avatarUrl={data.avatar_url} name={data.loginname} createAt={data.create_at} score={data.score}/>
                 </div>
             )
         }else {
