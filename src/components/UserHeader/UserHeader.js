@@ -19,13 +19,23 @@ export class UserHeader extends React.Component {
         score: 0,
     };
 
+    constructor(props) {
+        super(props);
+        this.goGithub = this.goGithub.bind(this);
+    }
+
+    goGithub(){
+        const {name} = this.props;
+        window.open(`https://github.com/${name}`)
+    }
+
     render() {
         const {avatarUrl,name,createAt,score} = this.props;
         console.log(createAt);
         return (
             <div>
                 <div className={styles.container} style={{backgroundColor:Helpers.randomColor()}}>
-                    <div className={styles.avatar}>
+                    <div className={styles.avatar} onClick={this.goGithub}>
                         <img src={avatarUrl} alt=""/>
                         <div className={styles.name}>
                             {name}
