@@ -1,0 +1,54 @@
+/*this css file is build for reset the css style which from markdown*/
+.markdown-text {
+    width: 100%;
+    padding: 18px 14px;
+    box-sizing: border-box;
+}
+.markdown-text p {
+    font-size: .8em;
+    line-height: 22px;
+    color: #000;
+}
+.markdown-text p a {
+    font-size: .6em;
+}
+.markdown-text img {
+    display: block;
+    width: 94%;
+    height: 260px;
+    margin: 10px auto 14px;
+    border: none;
+}
+.markdown-text .prettyprint {
+    display: block;
+    width: 94%;
+    margin: 0 auto;
+    font-size: .7em;
+    font-weight: bold;
+    color: #ff4400;
+}
+.markdown-text .prettyprint code {
+    display: block;
+    width: 100%;
+    overflow-x: scroll;
+
+}
+.markdown-text h2 {
+    font-size: 20px;
+    margin: 24px 0 6px;
+}
+.markdown-text ul,
+.markdown-text ol {
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.markdown-text ul li,
+.markdown-text ol li {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    font-size: .7em;
+
+}
