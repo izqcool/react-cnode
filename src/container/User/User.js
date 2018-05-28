@@ -1,17 +1,22 @@
 import React from 'react';
-import {Http,Loading,UserHeader} from '../../components';
+import {Http,Loading,UserHeader,ArticleList} from '../../components';
 import * as styles from './User.scss';
 
 const http = new Http();
+
 
 export class User extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            dataLoaded: false
+            dataLoaded: false,
+            whichTag: 'recent_replies',
+            itemDate: []
         };
         this.getUserInfo = this.getUserInfo.bind(this);
+        this.getTabs = this.getTabs.bind(this);
+        this.onClickTab = this.onClickTab.bind(this);
     };
 
     componentDidMount() {
@@ -25,6 +30,7 @@ export class User extends React.Component {
             console.log(res);
             this.setState({
                 data: res.data,
+                itemDate: res.data.recent_replies,
                 dataLoaded: true
             });
         }).catch((err) => {
@@ -32,8 +38,42 @@ export class User extends React.Component {
         })
     }
 
+
+    getTabs() {
+        const {whichTag} = this.state;
+        const tabLists = [
+            {
+                tab: '最近回复',
+                tag:'recent_replies',
+                active: true
+            },
+            {
+                tab: '最新发布',
+                tag: 'recent_topics',
+                active: true
+            }
+        ];
+
+        return tabLists.map((tab)=>{
+            return {
+                ...tab,
+                active: tab.tag === whichTag
+            }
+        });
+    }
+
+    onClickTab(item) {
+        const {data} = this.state;
+        this.setState({
+            whichTag: item,
+            itemDate: data[item]
+        });
+    }
+
     render() {
-        const {dataLoaded,data} = this.state;
+        const {dataLoaded,data,itemDate} = this.state;
+        const {history} = this.props;
+        const tabs = this.getTabs();
         if(dataLoaded) {
             return (
                 <div className={styles.user}>
@@ -41,6 +81,23 @@ export class User extends React.Component {
                                 name={data.loginname}
                                 createAt={data.create_at}
                                 score={data.score}/>
+                    <div className={styles.content}>
+                        <div className={styles.tab}>
+                            {
+                                tabs.map((tab,i)=>{
+                                    return (
+                                        <div key={i} className={`${tab.active ? styles.active: '' } ${styles.tab_items}`}
+                                            onClick={()=>{this.onClickTab(tab.tag)}}>
+                                            {tab.tab}
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                        <div>
+                            <ArticleList datas={itemDate} history={history}/>
+                        </div>
+                    </div>
                 </div>
             )
         }else {
