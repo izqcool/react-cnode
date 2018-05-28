@@ -24,12 +24,14 @@ export class ArticleList extends React.Component {
 
     static propTypes = {
         datas: PropTypes.array.isRequired,
-        history: PropTypes.object.isRequired
+        history: PropTypes.object.isRequired,
+        type: PropTypes.string.isRequired
     };
     //
     static defaultProps = {
         datas: [],
-        history: {}
+        history: {},
+        type: 'num'
     };
 
 
@@ -44,7 +46,7 @@ export class ArticleList extends React.Component {
     }
 
     render() {
-        const {datas} = this.props;
+        const {datas,type} = this.props;
         return (
             <div className={styles.container}>
 
@@ -63,9 +65,20 @@ export class ArticleList extends React.Component {
                                         {data.title}
                                     </div>
                                     <div className={styles.info}>
-                                        <div className={styles.num}>
-                                            {`${data.reply_count}/${data.visit_count}`}
-                                        </div>
+                                        {
+                                            type==='num'? (
+                                                <div className={styles.num}>
+                                                    {`${data.reply_count}/${data.visit_count}`}
+                                                </div>
+                                            ):(null)
+                                        }
+                                        {
+                                            type==='name'? (
+                                                <div className={styles.name}>
+                                                    {data.author.loginname}
+                                                </div>
+                                            ):(null)
+                                        }
                                         <div className={styles.sort}>
                                             <div>
                                                 {tabMap[data.tab]}

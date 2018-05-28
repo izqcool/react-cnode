@@ -72,6 +72,7 @@ export class User extends React.Component {
 
     render() {
         const {dataLoaded,data,itemDate} = this.state;
+        console.log(itemDate);
         const {history} = this.props;
         const tabs = this.getTabs();
         if(dataLoaded) {
@@ -95,7 +96,7 @@ export class User extends React.Component {
                             }
                         </div>
                         <div>
-                            <ArticleList datas={itemDate} history={history}/>
+                            <ArticleList datas={itemDate} history={history} type="name"/>
                         </div>
                     </div>
                 </div>
