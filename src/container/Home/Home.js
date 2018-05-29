@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as _ from 'lodash';
-import {Http,ArticleList,Helpers,Loading} from '../../components';
+import {Http,ArticleList,Helpers,Loading,ToolButton,Login} from '../../components';
 const http = new Http();
 
 const routeList = ['/','/home','/good','/ask','/share','/job'];
@@ -19,11 +19,14 @@ export class Home extends React.Component {
         super(props);
         this.state = {
             dataLoaded: false,
+            showLogin: false,
             datas: [],
             page: 1
         };
         this.shouldUpdate = this.shouldUpdate.bind(this);
         this.getData = this.getData.bind(this);
+        this.onShowLogin = this.onShowLogin.bind(this);
+        this.onCloseLogin = this.onCloseLogin.bind(this);
     }
 
     componentDidMount() {
@@ -84,14 +87,33 @@ export class Home extends React.Component {
         });
     }
 
+    onShowLogin() {
+        this.setState({
+            showLogin: true
+        });
+    }
+
+    onCloseLogin() {
+        this.setState({
+            showLogin: false
+        });
+    }
+
     render() {
         const {history} = this.props;
-        const {dataLoaded,datas} = this.state;
+        const {dataLoaded,datas,showLogin} = this.state;
 
         if(dataLoaded) {
             return (
                 <div>
                     <ArticleList datas={datas} history={history}/>
+                    <ToolButton type="login" onButtonClick={this.onShowLogin}/>
+                    {
+                        showLogin ? (
+                            <Login onCancel={this.onCloseLogin}/>
+                        ) : (null)
+                    }
+
                 </div>
             )
         }else {
