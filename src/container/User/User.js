@@ -1,5 +1,5 @@
 import React from 'react';
-import {Http,Loading,UserHeader,ArticleList} from '../../components';
+import {Http,Loading,UserHeader,ArticleList,GoBack} from '../../components';
 import * as styles from './User.scss';
 
 const http = new Http();
@@ -17,6 +17,7 @@ export class User extends React.Component {
         this.getUserInfo = this.getUserInfo.bind(this);
         this.getTabs = this.getTabs.bind(this);
         this.onClickTab = this.onClickTab.bind(this);
+        this.onGoBack = this.onGoBack.bind(this);
     };
 
     componentDidMount() {
@@ -70,6 +71,10 @@ export class User extends React.Component {
         });
     }
 
+    onGoBack() {
+        window.history.go(-1);
+    }
+
     render() {
         const {dataLoaded,data,itemDate} = this.state;
         console.log(itemDate);
@@ -99,6 +104,7 @@ export class User extends React.Component {
                             <ArticleList datas={itemDate} history={history} type="name"/>
                         </div>
                     </div>
+                    <GoBack onGoBack={this.onGoBack}/>
                 </div>
             )
         }else {
