@@ -60,9 +60,7 @@ export class ArticleHeader extends React.Component {
                         {title}
                     </div>
                     <div className={styles.time}>
-                        <i className={styles.icon}>
-                            <img src="../../../public/assets/images/time.png" alt=""/>
-                        </i>
+                        <i className="fa fa-clock-o" aria-hidden="true"></i>
                         {Helpers.dateFromNow(createAt)}
                     </div>
                 </div>

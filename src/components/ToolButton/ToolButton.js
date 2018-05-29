@@ -9,32 +9,32 @@ const iconClassMap = {
 export class ToolButton extends React.Component {
 
     static propTypes = {
-        onGoBack: PropTypes.func.isRequired,
+        onButtonClick: PropTypes.func.isRequired,
         isLogin : PropTypes.bool.isRequired
     };
     static defaultProps = {
         isLogin: false,
-        onGoBack: ()=>{
+        onButtonClick: ()=>{
 
         }
     };
 
     constructor(props) {
         super(props);
-        this.onGoBack = this.onGoBack.bind(this);
+        this.onButtonClick = this.onButtonClick.bind(this);
     }
 
 
 
-    onGoBack() {
-        this.props.onGoBack();
+    onButtonClick() {
+        this.props.onButtonClick();
     }
 
 
     render() {
         const {isLogin} = this.props;
         return (
-            <div className={styles.back} onClick={this.onGoBack}>
+            <div className={styles.back} onClick={this.onButtonClick}>
                 <i className="fa fa-long-arrow-left" aria-hidden="true">
 
                 </i>

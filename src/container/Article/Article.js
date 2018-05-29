@@ -1,6 +1,5 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
-import {Http,Loading,ArticleHeader,GoBack} from '../../components';
+import {Http,Loading,ArticleHeader,ToolButton} from '../../components';
 import * as styles from './Article.sass';
 
 const http = new Http();
@@ -56,7 +55,7 @@ export class Article extends React.Component {
 
                     </div>
                     <div>
-                        <GoBack onGoBack={this.onGoBack}/>
+                        <ToolButton onButtonClick={this.onGoBack}/>
                     </div>
                 </div>
             )

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Http,Loading,UserHeader,ArticleList,GoBack} from '../../components';
+import {Http,Loading,UserHeader,ArticleList,ToolButton} from '../../components';
 import * as styles from './User.scss';
 
 const http = new Http();
@@ -104,7 +104,7 @@ export class User extends React.Component {
                             <ArticleList datas={itemDate} history={history} type="name"/>
                         </div>
                     </div>
-                    <GoBack onGoBack={this.onGoBack}/>
+                    <ToolButton onButtonClick={this.onGoBack}/>
                 </div>
             )
         }else {
