@@ -8,7 +8,7 @@ const http = new Http();
 export class Login extends React.Component {
 
     static propTypes = {
-        onCancel: PropTypes.func.isRequired
+        onCancel: PropTypes.func.isRequired,
     };
     //
     static defaultProps = {
@@ -41,6 +41,8 @@ export class Login extends React.Component {
             }
         }).then((res)=>{
             console.log(res);
+            window.localStorage.setItem('cnodeUser',res);
+            this.props.onCancel();
         }).catch((err)=>{
             console.log(err);
         });

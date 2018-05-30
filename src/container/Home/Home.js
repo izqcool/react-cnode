@@ -98,16 +98,18 @@ export class Home extends React.Component {
             showLogin: false
         });
     }
-
     render() {
         const {history} = this.props;
         const {dataLoaded,datas,showLogin} = this.state;
-
+        const loginUser = JSON.stringify(window.localStorage.getItem('cnodeUser'));
+        const isLogin = loginUser ? true: false;
+        console.log(isLogin);
+        console.log(loginUser);
         if(dataLoaded) {
             return (
                 <div>
                     <ArticleList datas={datas} history={history}/>
-                    <ToolButton type="login" onButtonClick={this.onShowLogin}/>
+                    <ToolButton type="login" onButtonClick={this.onShowLogin} isLogin={isLogin} loginUser={loginUser}/>
                     {
                         showLogin ? (
                             <Login onCancel={this.onCloseLogin}/>

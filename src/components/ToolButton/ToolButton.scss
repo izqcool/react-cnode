@@ -1,8 +1,10 @@
-.back {
+.back,
+.login,
+.avatar {
   position: fixed;
   left: 30px;
   bottom: 40px;
-  z-index: 10000 !important;
+  z-index: 100 !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,4 +15,9 @@
   opacity: .5;
   color: #fff;
   font-size: 1.2em;
+}
+
+.avatar {
+  box-sizing: border-box;
+  border: 4px solid yellow;
 }
