@@ -1,6 +1,7 @@
 import React from 'react';
 import * as styles from './Comment.scss';
 import {Storage} from '../../classes';
+import {CommentList} from '../../components';
 
 export class Comment extends React.Component {
 
@@ -21,7 +22,7 @@ export class Comment extends React.Component {
 
 
     render() {
-        const repliesData = Storage.get('replies');
+        const repliesData = Storage.get('replies').reverse();
         return (
             <div className={styles.container}>
                 <div className={styles.header}>
@@ -38,7 +39,11 @@ export class Comment extends React.Component {
                     </div>
                 </div>
                 <div className={styles.content}>
-
+                    {
+                        repliesData.map((item,i)=>{
+                            return <CommentList key={i} data={item}/>
+                        })
+                    }
                 </div>
                 <div className={styles.footer}>
 
