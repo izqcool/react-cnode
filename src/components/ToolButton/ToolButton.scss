@@ -1,8 +1,8 @@
 .back,
 .login,
-.avatar {
+.avatar,
+.message {
   position: fixed;
-  left: 30px;
   bottom: 40px;
   z-index: 100 !important;
   display: flex;
@@ -27,4 +27,9 @@
     border-radius: 50%;
     overflow: hidden;
   }
+}
+.message {
+  position: fixed;
+
+  right: 30px;
 }

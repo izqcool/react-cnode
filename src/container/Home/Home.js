@@ -125,6 +125,12 @@ export class Home extends React.Component {
                         ) : (null)
                     }
 
+                    {
+                        isLogin ? (
+                            <ToolButton type="message" onButtonClick={clickEvent} loginUser={loginUser}/>
+                        ) :(null)
+                    }
+
                 </div>
             )
         }else {
