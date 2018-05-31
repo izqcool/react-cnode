@@ -1,7 +1,7 @@
 .container {
   position: fixed;
   bottom: 40px;
-  right: 30px;
+  right: 5.5vw;
   z-index: 100 !important;
   display: flex;
   justify-content: center;
@@ -12,5 +12,5 @@
   background-color: #000;
   opacity: .5;
   color: #fff;
-  font-size: 1em;
+  font-size: .8em;
 }

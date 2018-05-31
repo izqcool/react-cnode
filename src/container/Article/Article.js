@@ -15,6 +15,7 @@ export class Article extends React.Component {
             dataLoaded: false
         };
         this.onGoBack = this.onGoBack.bind(this);
+        this.onGoCommentPage = this.onGoCommentPage.bind(this);
 
     };
 
@@ -43,10 +44,17 @@ export class Article extends React.Component {
         window.history.go(-1);
     }
 
+    onGoCommentPage() {
+        const {data} = this.state;
+        const {history} = this.props;
+        history.push(`/comment/${data.id}`);
+    }
+
 
     render() {
         const {history} = this.props;
         const {dataLoaded,data} = this.state;
+        console.log(data);
         const loginUser = Storage.get('loginUser');
 
         if(dataLoaded) {
@@ -62,7 +70,9 @@ export class Article extends React.Component {
                     {
                         loginUser ? (
                             <div>
-                                <CommentBtn/>
+                                <CommentBtn replyCount={data.reply_count}
+                                            replies = {data.replies}
+                                            onGoComment={this.onGoCommentPage}/>
                             </div>
                         ) : (null)
                     }
