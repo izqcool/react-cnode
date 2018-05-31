@@ -1,0 +1,22 @@
+.container {
+  .header {
+    position: relative;
+    height: 110px;
+    background-color: #282828;
+    .back {
+      float: left;
+      line-height: 110px;
+      color: #c1c1c1;
+      margin-left: 30px;
+    }
+    .comment {
+      position: absolute;
+      width: 180px;
+      top: 0;
+      left: calc(375px - 90px);
+      line-height: 110px;
+      text-align: center;
+      color: #dfb316;
+    }
+  }
+}
