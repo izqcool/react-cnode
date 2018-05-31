@@ -1,5 +1,6 @@
 import React from 'react';
-import {Http,Loading,ArticleHeader,ToolButton} from '../../components';
+import {Http,Loading,ArticleHeader,ToolButton,CommentBtn} from '../../components';
+import {Storage} from '../../classes';
 import * as styles from './Article.sass';
 
 const http = new Http();
@@ -46,6 +47,7 @@ export class Article extends React.Component {
     render() {
         const {history} = this.props;
         const {dataLoaded,data} = this.state;
+        const loginUser = Storage.get('loginUser');
 
         if(dataLoaded) {
             return (
@@ -57,6 +59,13 @@ export class Article extends React.Component {
                     <div>
                         <ToolButton onButtonClick={this.onGoBack}/>
                     </div>
+                    {
+                        loginUser ? (
+                            <div>
+                                <CommentBtn/>
+                            </div>
+                        ) : (null)
+                    }
                 </div>
             )
         }else {

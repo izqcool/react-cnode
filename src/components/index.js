@@ -6,3 +6,4 @@ export * from './ArticleHeader';
 export * from './ToolButton';
 export * from './UserHeader';
 export * from './Login';
+export * from './CommentBtn';
