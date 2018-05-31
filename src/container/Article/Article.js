@@ -23,6 +23,7 @@ export class Article extends React.Component {
 
     componentDidMount() {
         this.getArticleData();
+
     }
 
     getArticleData() {
@@ -34,6 +35,11 @@ export class Article extends React.Component {
                 data: res.data,
                 dataLoaded: true
             });
+            if(Storage.get('replies')) {
+                Storage.remove();
+            }
+            //save replies data
+            Storage.put('replies',res.data.replies);
         }).catch((err)=>{
             console.log(err);
         });
@@ -71,7 +77,6 @@ export class Article extends React.Component {
                         loginUser ? (
                             <div>
                                 <CommentBtn replyCount={data.reply_count}
-                                            replies = {data.replies}
                                             onGoComment={this.onGoCommentPage}/>
                             </div>
                         ) : (null)
