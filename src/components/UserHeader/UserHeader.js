@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Helpers} from '../Helpers';
+import {Helpers} from '../../classes';
 import * as styles from './UserHeader.scss';
 
 export class UserHeader extends React.Component {

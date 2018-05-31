@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Helpers} from '../Helpers';
+import {Helpers} from '../../classes/Helpers';
 import * as styles from './ArticleList.scss';
 
 const tabMap = {

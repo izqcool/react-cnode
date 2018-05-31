@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as _ from 'lodash';
-import {Http,ArticleList,Helpers,Loading,ToolButton,Login} from '../../components';
+import {Helpers} from '../../classes';
+import {Http,ArticleList,Loading,ToolButton,Login} from '../../components';
 const http = new Http();
 
 const routeList = ['/','/home','/good','/ask','/share','/job'];
