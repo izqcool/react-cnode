@@ -18,6 +18,13 @@
 }
 
 .avatar {
-  box-sizing: border-box;
-  border: 4px solid yellow;
+  img {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 4px solid yellow;
+    border-radius: 50%;
+    overflow: hidden;
+  }
 }

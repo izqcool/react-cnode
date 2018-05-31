@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as _ from 'lodash';
-import {Helpers} from '../../classes';
+import {Helpers,Storage} from '../../classes';
 import {Http,ArticleList,Loading,ToolButton,Login} from '../../components';
 const http = new Http();
 
@@ -28,6 +28,7 @@ export class Home extends React.Component {
         this.getData = this.getData.bind(this);
         this.onShowLogin = this.onShowLogin.bind(this);
         this.onCloseLogin = this.onCloseLogin.bind(this);
+        this.goLoginUser = this.goLoginUser.bind(this);
     }
 
     componentDidMount() {
@@ -99,18 +100,25 @@ export class Home extends React.Component {
             showLogin: false
         });
     }
+
+    goLoginUser() {
+        const {history} = this.props;
+        const name = Storage.get('loginUser').loginname;
+        history.push(`/user/${name}`);
+    }
+
     render() {
         const {history} = this.props;
         const {dataLoaded,datas,showLogin} = this.state;
-        const loginUser = JSON.stringify(window.localStorage.getItem('cnodeUser'));
+        const loginUser = Storage.get('loginUser');
         const isLogin = loginUser ? true: false;
-        console.log(isLogin);
-        console.log(loginUser);
+        const clickEvent = isLogin ? this.goLoginUser : this.onShowLogin;
+
         if(dataLoaded) {
             return (
                 <div>
                     <ArticleList datas={datas} history={history}/>
-                    <ToolButton type="login" onButtonClick={this.onShowLogin} isLogin={isLogin} loginUser={loginUser}/>
+                    <ToolButton type="login" onButtonClick={clickEvent} isLogin={isLogin} loginUser={loginUser}/>
                     {
                         showLogin ? (
                             <Login onCancel={this.onCloseLogin}/>

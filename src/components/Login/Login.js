@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Storage} from '../../classes';
 import {Http} from '../../components';
 import * as styles from './Login.scss';
 
@@ -40,8 +41,7 @@ export class Login extends React.Component {
                 "accesstoken": accessToken
             }
         }).then((res)=>{
-            console.log(res);
-            window.localStorage.setItem('cnodeUser',res);
+            Storage.put('loginUser',res);
             this.props.onCancel();
         }).catch((err)=>{
             console.log(err);
@@ -55,7 +55,8 @@ export class Login extends React.Component {
                     <i className="fa fa-times" aria-hidden="true" onClick={this.onCancel}></i>
                 </div>
                 <div className={styles.content}>
-                    <input type="text" placeholder="请输入Access Token" ref={this.inputRef}/>
+                    {/*请输入Access Token*/}
+                    <input type="text" placeholder="6d493a82-127f-4f68-b99e-7bd6c4a6aae0" defaultValue="6d493a82-127f-4f68-b99e-7bd6c4a6aae0"  ref={this.inputRef}/>
                     <button onClick={this.onConfirm}>登 录</button>
                 </div>
             </div>
