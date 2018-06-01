@@ -1,5 +1,6 @@
 import React from 'react';
-import {Http,Loading,ArticleHeader,ToolButton,CommentBtn} from '../../components';
+import {Http} from '../../classes';
+import {Loading,ArticleHeader,ToolButton,CommentBtn} from '../../components';
 import {Storage} from '../../classes';
 import * as styles from './Article.sass';
 
@@ -35,11 +36,11 @@ export class Article extends React.Component {
                 data: res.data,
                 dataLoaded: true
             });
-            if(Storage.get('replies')) {
-                Storage.remove();
-            }
-            //save replies data
-            Storage.put('replies',res.data.replies);
+            // if(Storage.get('replies')) {
+            //     Storage.remove();
+            // }
+            // //save replies data
+            // Storage.put('replies',res.data.replies);
         }).catch((err)=>{
             console.log(err);
         });

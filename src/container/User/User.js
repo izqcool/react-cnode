@@ -1,5 +1,6 @@
 import React from 'react';
-import {Http,Loading,UserHeader,ArticleList,ToolButton} from '../../components';
+import {Http} from '../../classes';
+import {Loading,UserHeader,ArticleList,ToolButton} from '../../components';
 import * as styles from './User.scss';
 
 const http = new Http();

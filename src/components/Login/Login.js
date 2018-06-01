@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Storage} from '../../classes';
-import {Http} from '../../components';
+import {Storage,Http} from '../../classes';
 import * as styles from './Login.scss';
 
 const http = new Http();
