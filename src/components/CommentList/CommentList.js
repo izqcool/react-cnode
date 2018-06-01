@@ -7,15 +7,22 @@ export class CommentList extends React.Component {
     static propTypes = {
         data: PropTypes.object.isRequired,
         floorNum: PropTypes.number.isRequired,
+        onClickAvatar: PropTypes.func.isRequired
     };
     static defaultProps = {
         data: {},
-        floorNum: 0
+        floorNum: 0,
+        onClickAvatar: () => {}
     };
 
     constructor(props) {
         super(props);
         this.contentRef = React.createRef();
+        this.onClickAvatar = this.onClickAvatar.bind(this);
+    }
+
+    onClickAvatar() {
+        this.props.onClickAvatar();
     }
 
 
@@ -26,7 +33,7 @@ export class CommentList extends React.Component {
             <div className={styles.container}>
                 <div className={styles.left}>
                     <div className={styles.avatar}>
-                        <img src={data.author.avatar_url} alt=""/>
+                        <img src={data.author.avatar_url} alt="" onClick={this.onClickAvatar}/>
                     </div>
                     <div className={styles.floor}>
                         {`${floorNum} 楼`}

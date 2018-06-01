@@ -13,6 +13,7 @@ export class Comment extends React.Component {
             dataLoaded : false
         };
         this.goBack = this.goBack.bind(this);
+        this.onGoUser = this.onGoUser.bind(this);
         this.getData = this.getData.bind(this);
     }
 
@@ -37,6 +38,11 @@ export class Comment extends React.Component {
 
     goBack() {
         window.history.go(-1);
+    }
+
+    onGoUser(name) {
+        const {history} = this.props;
+        history.push(`/user/${name}`);
     }
 
 
@@ -68,7 +74,9 @@ export class Comment extends React.Component {
                             <div className={styles.content}>
                                 {
                                     reverseData.map((item,i)=>{
-                                        return <CommentList key={i} data={item} floorNum={reverseData.length-i}/>
+                                        return <CommentList key={i} data={item}
+                                                            floorNum={reverseData.length-i}
+                                                            onClickAvatar={()=>{this.onGoUser(item.author.loginname)}}/>
                                     })
                                 }
                             </div>
