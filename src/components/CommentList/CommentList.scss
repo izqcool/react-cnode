@@ -8,18 +8,19 @@
   .left {
     width: 14%;
     .avatar {
-      background-color: red;
       width: 74px;
       height: 74px;
       img {
         display: block;
         width: 100%;
         height: 100%;
+        margin-top: 8px;
         border: none;
         border-radius: 50%;
       }
     }
     .floor {
+      width: 74px;
       margin: 20px auto 0;
       font-size: .8em;
       color: #cccccc;
