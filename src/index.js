@@ -33,3 +33,6 @@ document.addEventListener('DOMContentLoaded',function() {
         console.warn('cannot find the container');
     }
 });
+
+const allLink = document.querySelectorAll('a');
+console.log(allLink);

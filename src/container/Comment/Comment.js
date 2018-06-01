@@ -11,8 +11,8 @@ export class Comment extends React.Component {
     }
 
     componentDidMount() {
-        const repliesData = Storage.get('replies');
-        console.log(repliesData);
+        // const repliesData = Storage.get('replies');
+        // console.log(repliesData);
     }
 
     goBack() {
@@ -41,7 +41,7 @@ export class Comment extends React.Component {
                 <div className={styles.content}>
                     {
                         repliesData.map((item,i)=>{
-                            return <CommentList key={i} data={item}/>
+                            return <CommentList key={i} data={item} floorNum={repliesData.length-i}/>
                         })
                     }
                 </div>

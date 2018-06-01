@@ -3,14 +3,14 @@
   justify-content: space-between;
   width: 100%;
   box-sizing: border-box;
-  padding: 0 30px;
+  padding: 20px 30px;
+  border-bottom: 1px solid #f9f9f9;
   .left {
-    height: 100px;
     width: 14%;
     .avatar {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto;
+      background-color: red;
+      width: 74px;
+      height: 74px;
       img {
         display: block;
         width: 100%;
@@ -19,8 +19,34 @@
         border-radius: 50%;
       }
     }
+    .floor {
+      margin: 20px auto 0;
+      font-size: .8em;
+      color: #cccccc;
+    }
   }
   .right {
     width: 86%;
+    .info {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      font-size: 14px;
+      color: #cccccc;
+    }
+    .text {
+      padding: 2px 0;
+      color: #fff;
+      line-height: 14px;
+      font-size: 12px;
+    }
+    .event {
+      display: flex;
+      justify-content: space-between;
+      i {
+        font-size: 1em;
+        color: #cccccc;
+      }
+    }
   }
 }

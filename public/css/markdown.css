@@ -52,3 +52,10 @@
     font-size: .7em;
 
 }
+.CommentList__text .markdown-text {
+    padding: 0 0 6px 0;
+}
+.CommentList__text .markdown-text p {
+    line-height: 16px;
+    margin: 0;
+}
