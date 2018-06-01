@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Helpers} from '../../classes';
+import * as _ from 'lodash';
 import * as styles from './CommentList.scss';
 
 export class CommentList extends React.Component {
@@ -19,6 +20,24 @@ export class CommentList extends React.Component {
         super(props);
         this.contentRef = React.createRef();
         this.onClickAvatar = this.onClickAvatar.bind(this);
+        this.linkToUser = this.linkToUser.bind(this);
+    }
+
+    componentDidMount() {
+        this.linkToUser();
+    }
+
+    // change link for a which for @ user
+    linkToUser() {
+        const allLinks = this.contentRef.current.querySelectorAll('a');
+        allLinks.forEach((item,i)=>{
+            let newLink = item.href;
+            if(_.includes(item.href,'/user')) {
+                newLink =  _.replace(item.href,'/user','/#/user');
+            }
+            item.href = newLink;
+        });
+
     }
 
     onClickAvatar() {
@@ -48,15 +67,15 @@ export class CommentList extends React.Component {
                             {Helpers.dateFromNow(data.create_at)}
                         </div>
                     </div>
-                    <div className={styles.text} dangerouslySetInnerHTML={{__html: data.content}}>
+                    <div className={styles.text} ref={this.contentRef} dangerouslySetInnerHTML={{__html: data.content}}>
 
                     </div>
                     <div className={styles.event}>
                         <div className={styles.praise}>
-                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                            <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
                         </div>
                         <div className={styles.ait}>
-                            <i class="fa fa-reply" aria-hidden="true"></i>
+                            <i className="fa fa-reply" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
