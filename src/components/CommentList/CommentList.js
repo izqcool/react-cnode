@@ -72,7 +72,7 @@ export class CommentList extends React.Component {
                     </div>
                     <div className={styles.event}>
                         <div className={styles.praise}>
-                            <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                            <i className={`${data.is_uped?styles.is_uped:styles.is_down} fa fa-thumbs-o-up`} aria-hidden="true"></i>
                         </div>
                         <div className={styles.ait}>
                             <i className="fa fa-reply" aria-hidden="true"></i>
