@@ -8,12 +8,14 @@ export class CommentList extends React.Component {
     static propTypes = {
         data: PropTypes.object.isRequired,
         floorNum: PropTypes.number.isRequired,
-        onClickAvatar: PropTypes.func.isRequired
+        onClickAvatar: PropTypes.func.isRequired,
+        onLike: PropTypes.func.isRequired,
     };
     static defaultProps = {
         data: {},
         floorNum: 0,
-        onClickAvatar: () => {}
+        onClickAvatar: () => {},
+        onLike: () => {}
     };
 
     constructor(props) {
@@ -22,6 +24,7 @@ export class CommentList extends React.Component {
         this.onClickAvatar = this.onClickAvatar.bind(this);
         this.linkToUser = this.linkToUser.bind(this);
         this.isLike = this.isLike.bind(this);
+        this.onLike = this.onLike.bind(this);
     }
 
     componentDidMount() {
@@ -44,6 +47,9 @@ export class CommentList extends React.Component {
     onClickAvatar() {
         this.props.onClickAvatar();
     }
+    onLike(id) {
+        this.props.onLike(id);
+    }
 
     isLike(allLikes) {
         const loginUser = Storage.get('loginUser');
@@ -61,7 +67,7 @@ export class CommentList extends React.Component {
     render() {
         const {data,floorNum} = this.props;
 
-        const isLike = this.isLike(data.ups)
+        const isLike = this.isLike(data.ups);
 
         return (
             <div className={styles.container}>
@@ -87,7 +93,7 @@ export class CommentList extends React.Component {
                     </div>
                     <div className={styles.event}>
                         <div className={styles.praise}>
-                            <i className={`${isLike ? styles.is_uped:styles.is_down} fa fa-thumbs-o-up`} aria-hidden="true"></i>
+                            <i className={`${isLike ? styles.is_uped:styles.is_down} fa fa-thumbs-o-up`} aria-hidden="true" onClick={()=>{this.onLike(data.id)}}></i>
                         </div>
                         <div className={styles.ait}>
                             <i className="fa fa-reply" aria-hidden="true"></i>

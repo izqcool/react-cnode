@@ -15,6 +15,7 @@ export class Comment extends React.Component {
         this.goBack = this.goBack.bind(this);
         this.onGoUser = this.onGoUser.bind(this);
         this.getData = this.getData.bind(this);
+        this.onLike = this.onLike.bind(this);
     }
 
     componentDidMount() {
@@ -43,6 +44,21 @@ export class Comment extends React.Component {
     onGoUser(name) {
         const {history} = this.props;
         history.push(`/user/${name}`);
+    }
+
+    onLike(id) {
+        http.post(`/reply/${id}/ups`,{
+            params: {
+                accesstoken: '6d493a82-127f-4f68-b99e-7bd6c4a6aae0'
+            }
+        }).then((res)=>{
+            console.log(res);
+            if(res.success) {
+                this.getData();
+            }
+        }).catch((err)=>{
+            console.log(err);
+        });
     }
 
 
@@ -76,7 +92,8 @@ export class Comment extends React.Component {
                                     reverseData.map((item,i)=>{
                                         return <CommentList key={i} data={item}
                                                             floorNum={reverseData.length-i}
-                                                            onClickAvatar={()=>{this.onGoUser(item.author.loginname)}}/>
+                                                            onClickAvatar={()=>{this.onGoUser(item.author.loginname)}}
+                                        onLike={this.onLike}/>
                                     })
                                 }
                             </div>
