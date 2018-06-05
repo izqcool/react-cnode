@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Helpers} from '../../classes';
+import {Helpers,Storage} from '../../classes';
 import * as _ from 'lodash';
 import * as styles from './CommentList.scss';
 
@@ -21,6 +21,7 @@ export class CommentList extends React.Component {
         this.contentRef = React.createRef();
         this.onClickAvatar = this.onClickAvatar.bind(this);
         this.linkToUser = this.linkToUser.bind(this);
+        this.isLike = this.isLike.bind(this);
     }
 
     componentDidMount() {
@@ -44,9 +45,23 @@ export class CommentList extends React.Component {
         this.props.onClickAvatar();
     }
 
+    isLike(allLikes) {
+        const loginUser = Storage.get('loginUser');
+        let loginId;
+        if(loginUser) {
+            loginId = loginUser.id;
+        }else {
+            loginId = null;
+        }
+        const isLike = _.includes(allLikes,loginId);
+        return isLike;
+    }
+
 
     render() {
         const {data,floorNum} = this.props;
+
+        const isLike = this.isLike(data.ups)
 
         return (
             <div className={styles.container}>
@@ -72,7 +87,7 @@ export class CommentList extends React.Component {
                     </div>
                     <div className={styles.event}>
                         <div className={styles.praise}>
-                            <i className={`${data.is_uped?styles.is_uped:styles.is_down} fa fa-thumbs-o-up`} aria-hidden="true"></i>
+                            <i className={`${isLike ? styles.is_uped:styles.is_down} fa fa-thumbs-o-up`} aria-hidden="true"></i>
                         </div>
                         <div className={styles.ait}>
                             <i className="fa fa-reply" aria-hidden="true"></i>
