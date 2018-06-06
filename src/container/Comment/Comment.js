@@ -98,7 +98,13 @@ export class Comment extends React.Component {
                                 }
                             </div>
                             <div className={styles.footer}>
-
+                                <div className={styles.avator}>
+                                    <img src="https://avatars2.githubusercontent.com/u/10626543?s=64&v=4" alt=""/>
+                                </div>
+                                <input type="text" defaultValue="嘿，说点什么吧！"/>
+                                <div className={styles.confirm}>
+                                    <i className="fa fa-reply" aria-hidden="true"></i>
+                                </div>
                             </div>
                         </div>
                     ):(

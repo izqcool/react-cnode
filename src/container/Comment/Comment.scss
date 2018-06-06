@@ -19,4 +19,51 @@
       color: #dfb316;
     }
   }
+  .footer {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 110px;
+    background-color: #fff;
+    border-top: 2px solid #ececec;
+    .avator,
+    .confirm {
+      width: 12%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .avator {
+      width: 16%;
+      img {
+        display: block;
+        width: 74px;
+        height: 74px;
+        border: none;
+        border-radius: 50%;
+      }
+    }
+    input {
+      display: block;
+      width: 70%;
+      line-height: 60px;
+      border: none;
+      outline: none;
+      border-bottom: 2px solid #747474;
+      color: #7a7a7a;
+      font-size: 1em;
+    }
+    .confirm {
+      i {
+        font-size: 1.3em;
+        color: #a6a6a6;
+      }
+    }
+  }
 }
