@@ -19,8 +19,10 @@ export class Http {
             // Prepend `/api` to relative URL, to proxy to API server.
             return `https://cnodejs.org/api/v1${adjustedPath}`;
         } else {
-            return adjustedPath;
+            return `https://cnodejs.org/api/v1${adjustedPath}`;
         }
+
+
     }
 
     onCancel(req) {

@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --config webpack/dev.config.js --open --color --progress",
-    "build": "webpack-dev-server --config webpack/prod.config.js --open --color --progress"
+    "build": "webpack --config webpack/prod.config.js --open --color --progress"
   },
   "dependencies": {
     "autoprefixer": "^8.5.0",

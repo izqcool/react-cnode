@@ -5,13 +5,12 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 
-
 module.exports = {
     entry: './src/index.js',
 
     output: {
         filename: 'build.js',
-        path: __dirname+'/dist'
+        path: path.resolve(__dirname,'dist')
     },
     performance : {
         hints : false
@@ -114,7 +113,7 @@ module.exports = {
                 minifyURLs: true,
             }
         }),
-        // new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(['./dist']),
         new webpack.HotModuleReplacementPlugin()
     ]
 
