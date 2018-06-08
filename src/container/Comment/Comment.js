@@ -10,12 +10,15 @@ export class Comment extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataLoaded : false
+            dataLoaded : false,
+            isAit: false
         };
+        this.inputRef = React.createRef();
         this.goBack = this.goBack.bind(this);
         this.onGoUser = this.onGoUser.bind(this);
         this.getData = this.getData.bind(this);
         this.onLike = this.onLike.bind(this);
+        this.onAit = this.onAit.bind(this);
     }
 
     componentDidMount() {
@@ -28,7 +31,7 @@ export class Comment extends React.Component {
         http.get(`/topic/${id}`).then((res)=>{
             console.log(res);
             this.setState({
-                repliesData: res.data.replies,
+                repliesData: res.data.replies.reverse(),
                 dataLoaded: true
             });
         }).catch((err)=>{
@@ -61,14 +64,19 @@ export class Comment extends React.Component {
         });
     }
 
+    onAit(name) {
+        const input = this.inputRef.current;
+        console.log(input);
+        input.value=`@${name} `;
+        this.setState({
+            isAit: true
+        });
+    }
+
 
 
     render() {
         const {dataLoaded,repliesData} = this.state;
-        let reverseData;
-        if(repliesData) {
-            reverseData = repliesData.reverse();
-        }
         return (
             <div className={styles.container}>
                 {
@@ -82,16 +90,17 @@ export class Comment extends React.Component {
                                     评论
                                     {
                                         repliesData ? (
-                                            `  ${reverseData.length}`
+                                            `  ${repliesData.length}`
                                         ) : (null)
                                     }
                                 </div>
                             </div>
                             <div className={styles.content}>
                                 {
-                                    reverseData.map((item,i)=>{
+                                    repliesData.map((item,i)=>{
                                         return <CommentList key={i} data={item}
-                                                            floorNum={reverseData.length-i}
+                                                            floorNum={repliesData.length-i}
+                                                            onAit={()=>{this.onAit(item.author.loginname)}}
                                                             onClickAvatar={()=>{this.onGoUser(item.author.loginname)}}
                                         onLike={this.onLike}/>
                                     })
@@ -101,7 +110,7 @@ export class Comment extends React.Component {
                                 <div className={styles.avator}>
                                     <img src="https://avatars2.githubusercontent.com/u/10626543?s=64&v=4" alt=""/>
                                 </div>
-                                <input type="text" defaultValue="嘿，说点什么吧！"/>
+                                <input type="text" placeholder="嘿，说点什么吧！" ref={this.inputRef}/>
                                 <div className={styles.confirm}>
                                     <i className="fa fa-reply" aria-hidden="true"></i>
                                 </div>

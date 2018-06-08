@@ -10,12 +10,14 @@ export class CommentList extends React.Component {
         floorNum: PropTypes.number.isRequired,
         onClickAvatar: PropTypes.func.isRequired,
         onLike: PropTypes.func.isRequired,
+        onAit: PropTypes.func.isRequired,
     };
     static defaultProps = {
         data: {},
         floorNum: 0,
         onClickAvatar: () => {},
-        onLike: () => {}
+        onLike: () => {},
+        onAit: () => {},
     };
 
     constructor(props) {
@@ -25,6 +27,7 @@ export class CommentList extends React.Component {
         this.linkToUser = this.linkToUser.bind(this);
         this.isLike = this.isLike.bind(this);
         this.onLike = this.onLike.bind(this);
+        this.onAit = this.onAit.bind(this);
     }
 
     componentDidMount() {
@@ -63,6 +66,10 @@ export class CommentList extends React.Component {
         return isLike;
     }
 
+    onAit() {
+        this.props.onAit();
+    }
+
 
     render() {
         const {data,floorNum} = this.props;
@@ -96,7 +103,7 @@ export class CommentList extends React.Component {
                             <i className={`${isLike ? styles.is_uped:styles.is_down} fa fa-thumbs-o-up`} aria-hidden="true" onClick={()=>{this.onLike(data.id)}}></i>
                         </div>
                         <div className={styles.ait}>
-                            <i className="fa fa-reply" aria-hidden="true"></i>
+                            <i className="fa fa-reply" aria-hidden="true" onClick={this.onAit}></i>
                         </div>
                     </div>
                 </div>
