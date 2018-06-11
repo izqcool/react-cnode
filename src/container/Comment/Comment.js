@@ -19,6 +19,7 @@ export class Comment extends React.Component {
         this.getData = this.getData.bind(this);
         this.onLike = this.onLike.bind(this);
         this.onAit = this.onAit.bind(this);
+        this.onComment = this.onComment.bind(this);
     }
 
     componentDidMount() {
@@ -73,6 +74,29 @@ export class Comment extends React.Component {
         });
     }
 
+    onComment() {
+        const {isAit} = this.state;
+        const {match} = this.props;
+        const topicId = match.params.topic_id;
+        const inputValue = this.inputRef.current.value;
+        console.log(inputValue);
+        console.log(match);
+        // 评论文章
+        if(!isAit) {
+            http.post(`/topic/${topicId}/replies`,{
+                params: {
+                    "accesstoken" : '6d493a82-127f-4f68-b99e-7bd6c4a6aae0',
+                    "content" : inputValue,
+                    reply_id: ''
+                }
+            }).then((res)=>{
+                console.log(res);
+            }).catch((err)=>{
+                console.log(err);
+            })
+        }
+    }
+
 
 
     render() {
@@ -112,7 +136,7 @@ export class Comment extends React.Component {
                                 </div>
                                 <input type="text" placeholder="嘿，说点什么吧！" ref={this.inputRef}/>
                                 <div className={styles.confirm}>
-                                    <i className="fa fa-reply" aria-hidden="true"></i>
+                                    <i className="fa fa-reply" aria-hidden="true" onClick={this.onComment}></i>
                                 </div>
                             </div>
                         </div>
