@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Http} from '../../classes';
 import {Loading,UserHeader,ArticleList,ToolButton} from '../../components';
 import * as styles from './User.scss';
@@ -7,6 +8,14 @@ const http = new Http();
 
 
 export class User extends React.Component {
+
+    static propTypes = {
+        isSelf: PropTypes.bool.isRequired
+    };
+
+    static defaultProps = {
+        isSelf: false
+    };
 
     constructor(props) {
         super(props);
@@ -22,11 +31,13 @@ export class User extends React.Component {
     };
 
     componentDidMount() {
+        console.log(this.props.isSelf);
         this.getUserInfo();
     }
 
     getUserInfo() {
         const {match} = this.props;
+        console.log(match);
         const name = match.params.username;
         http.get(`/user/${name}`).then((res) => {
             console.log(res);

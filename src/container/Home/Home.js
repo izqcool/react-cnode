@@ -104,7 +104,7 @@ export class Home extends React.Component {
     goLoginUser() {
         const {history} = this.props;
         const name = Storage.get('loginUser').loginname;
-        history.push(`/user/${name}`);
+        history.push(`/owner/${name}`);
     }
 
     render() {

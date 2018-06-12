@@ -19,6 +19,9 @@ const vDomTree = (
             <Route exact path="/job" component={App} />
             <Route exact path="/topic/:id"  component={Article}/>
             <Route exact path="/user/:username"  component={User}/>
+            <Route exact path="/owner/:username"  component={({match})=>(
+                <User isSelf={true} match={match} />
+            )}/>
             <Route exact path="/comment/:topic_id"  component={Comment}/>
         </Switch>
     </Router>
