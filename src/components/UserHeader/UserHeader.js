@@ -10,6 +10,7 @@ export class UserHeader extends React.Component {
         name: PropTypes.string.isRequired,
         createAt: PropTypes.string.isRequired,
         score: PropTypes.number.isRequired,
+        isSelf: PropTypes.bool.isRequired
 
     };
     static  defaultProps = {
@@ -17,6 +18,7 @@ export class UserHeader extends React.Component {
         name: '',
         createAt: '',
         score: 0,
+        isSelf: false
     };
 
     constructor(props) {
@@ -30,16 +32,31 @@ export class UserHeader extends React.Component {
     }
 
     render() {
-        const {avatarUrl,name,createAt,score} = this.props;
-        console.log(createAt);
+        const {avatarUrl,name,createAt,score,isSelf} = this.props;
         return (
             <div>
                 <div className={styles.container} style={{backgroundColor:Helpers.randomColor()}}>
-                    <div className={styles.avatar} onClick={this.goGithub}>
-                        <img src={avatarUrl} alt=""/>
-                        <div className={styles.name}>
-                            {name}
+                    <div className={styles.wrapper}>
+                        {
+                            isSelf && (
+                                <div className={styles.write}>
+                                    <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </div>
+                            )
+                        }
+                        <div className={styles.avatar} onClick={this.goGithub}>
+                            <img src={avatarUrl} alt=""/>
+                            <div className={styles.name}>
+                                {name}
+                            </div>
                         </div>
+                        {
+                            isSelf && (
+                                <div className={styles.set}>
+                                    <i className="fa fa-cog" aria-hidden="true"></i>
+                                </div>
+                            )
+                        }
                     </div>
                     <div className={styles.webInfo}>
                         <div className={styles.create_at}>

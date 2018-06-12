@@ -31,7 +31,6 @@ export class User extends React.Component {
     };
 
     componentDidMount() {
-        console.log(this.props.isSelf);
         this.getUserInfo();
     }
 
@@ -89,8 +88,7 @@ export class User extends React.Component {
 
     render() {
         const {dataLoaded,data,itemDate} = this.state;
-        console.log(itemDate);
-        const {history} = this.props;
+        const {history,isSelf} = this.props;
         const tabs = this.getTabs();
         if(dataLoaded) {
             return (
@@ -98,7 +96,9 @@ export class User extends React.Component {
                     <UserHeader avatarUrl={data.avatar_url}
                                 name={data.loginname}
                                 createAt={data.create_at}
-                                score={data.score}/>
+                                score={data.score}
+                                isSelf={isSelf}
+                    />
                     <div className={styles.content}>
                         <div className={styles.tab}>
                             {
