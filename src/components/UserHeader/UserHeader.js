@@ -24,11 +24,17 @@ export class UserHeader extends React.Component {
     constructor(props) {
         super(props);
         this.goGithub = this.goGithub.bind(this);
+        this.onGoPublish = this.onGoPublish.bind(this);
     }
 
     goGithub(){
         const {name} = this.props;
         window.open(`https://github.com/${name}`)
+    }
+
+    onGoPublish() {
+        const {history} = this.props;
+        history.push(`/publish`);
     }
 
     render() {
@@ -40,7 +46,7 @@ export class UserHeader extends React.Component {
                         {
                             isSelf && (
                                 <div className={styles.write}>
-                                    <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={this.onGoPublish}></i>
                                 </div>
                             )
                         }

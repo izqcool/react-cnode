@@ -10,7 +10,8 @@ const http = new Http();
 export class User extends React.Component {
 
     static propTypes = {
-        isSelf: PropTypes.bool.isRequired
+        isSelf: PropTypes.bool.isRequired,
+        history: PropTypes.object.isRequired
     };
 
     static defaultProps = {
@@ -89,6 +90,7 @@ export class User extends React.Component {
     render() {
         const {dataLoaded,data,itemDate} = this.state;
         const {history,isSelf} = this.props;
+        console.log(history);
         const tabs = this.getTabs();
         if(dataLoaded) {
             return (
@@ -98,6 +100,7 @@ export class User extends React.Component {
                                 createAt={data.create_at}
                                 score={data.score}
                                 isSelf={isSelf}
+                                history={history}
                     />
                     <div className={styles.content}>
                         <div className={styles.tab}>
