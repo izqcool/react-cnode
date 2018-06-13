@@ -1,0 +1,20 @@
+.container {
+  .header {
+    display: flex;
+    width: 100%;
+    height: 120px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #292829;
+    font-size: 1.1em;
+    .back,
+    .publish {
+      color: #bfbfbf;
+      padding: 0 40px;
+      font-size: 1em;
+    }
+    .title {
+      color: #ddb512;
+    }
+  }
+}
