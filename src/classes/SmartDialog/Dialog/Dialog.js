@@ -5,7 +5,7 @@ import * as styles from './Dialog.scss';
 const BASE_Z_INDEX = 10000;
 
 export class Dialog extends React.Component {
-    static PropTypes = {
+    static propTypes = {
         sequenceId: PropTypes.number.isRequired,
         total: PropTypes.number,
         styles: PropTypes.object,
@@ -33,7 +33,6 @@ export class Dialog extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.$model);
         const width = this.$model.current.getBoundingClientRect().width;
         const x = (window.innerWidth - width) / 2;
         const y = 100 * this.props.total + 100;
@@ -54,7 +53,6 @@ export class Dialog extends React.Component {
         const {sequenceId,children} = this.props;
         const _styles = this.props.styles;
         const _maskStyles = this.props.maskStyles;
-        console.log(_maskStyles);
         return (
             <div className={styles.dialog}>
                 <div className={styles.model} ref={this.$model} style={{..._styles,'zIndex':BASE_Z_INDEX + sequenceId + 1}}>
