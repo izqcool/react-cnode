@@ -13,6 +13,8 @@ export class SmartDialog {
 
     styles;
 
+    maskStyles;
+
     allowOutsideClick = true;
 
     onClose;
@@ -21,6 +23,7 @@ export class SmartDialog {
         const opts = {
             component: null,
             styles: {},
+            maskStyles: {},
             allowOutsideClick: true,
             onClose: () => {
             },
@@ -29,6 +32,7 @@ export class SmartDialog {
         this._selector = `#smart_dialog_${SmartDialog.id++}`;
         this.component = opts.component;
         this.styles = opts.styles;
+        this.maskStyles = opts.maskStyles;
         this.allowOutsideClick = opts.allowOutsideClick;
         this.onClose = opts.onClose;
     }
@@ -69,6 +73,7 @@ export class SmartDialog {
             sequenceId: total,
             total,
             styles: this.styles,
+            maskStyles: this.maskStyles,
             allowOutsideClick: this.allowOutsideClick,
             onClose: this.close.bind(this)
         };

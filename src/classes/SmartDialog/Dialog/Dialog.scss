@@ -1,0 +1,19 @@
+.dialog {
+  .model {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    .modelDialog {
+      position: relative;
+    }
+  }
+}
+.mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  opacity: .5;
+}
