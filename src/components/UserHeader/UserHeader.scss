@@ -54,3 +54,46 @@
     font-size: .6em;
   }
 }
+
+
+//dialog styles
+.setDialog {
+  width: 600px;
+  border-radius: 8px;
+  background-color: #242424;
+  .header,
+  .about,
+  .out {
+    display: flex;
+    height: 80px;
+    justify-content: flex-start;
+    align-items: center;
+    i {
+      margin: 0 60px;
+      color: #8c8c8c;
+    }
+    div {
+      color: #bcbcbc;
+      font-size: .8em;
+    }
+  }
+  .header {
+    background-color: #141414;
+  }
+  .out {
+    i,
+    div {
+      color: #e84c35;
+    }
+  }
+  .close {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    i {
+      color: #fff;
+      font-size: 1.4em;
+    }
+  }
+}
