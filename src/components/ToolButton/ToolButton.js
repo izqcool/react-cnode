@@ -12,16 +12,16 @@ export class ToolButton extends React.Component {
         onButtonClick: PropTypes.func.isRequired,
         isLogin : PropTypes.bool.isRequired,
         type : PropTypes.string.isRequired,
-        loginUser: PropTypes.object.isRequired
+        loginUrl : PropTypes.string.isRequired
     };
     static defaultProps = {
         isLogin: false,
         onButtonClick: ()=>{
 
         },
+        loginUrl: '',
         type: 'goBack',
         isAvatar: false,
-        loginUser: {}
     };
 
     constructor(props) {
@@ -37,11 +37,11 @@ export class ToolButton extends React.Component {
 
 
     render() {
-        const {isLogin,type,loginUser} = this.props;
+        const {isLogin,type,loginUrl} = this.props;
         if(isLogin) {
             return (
                 <div className={styles.avatar} onClick={this.onButtonClick} style={{left:'5.5vw'}}>
-                    <img src={loginUser.avatar_url} alt=""/>
+                    <img src={loginUrl} alt=""/>
                 </div>
             )
         }else {

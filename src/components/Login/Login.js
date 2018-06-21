@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Storage,Http} from '../../classes';
+import {Http} from '../../classes';
 import * as styles from './Login.scss';
 
 const http = new Http();
@@ -40,8 +40,14 @@ export class Login extends React.Component {
                 "accesstoken": accessToken
             }
         }).then((res)=>{
-            Storage.put('loginUser',res);
-            this.props.onCancel();
+            if(res.success) {
+                window.localStorage.setItem('cnodeLoginName',res.loginname);
+                window.localStorage.setItem('cnodeId',res.id);
+                window.localStorage.setItem('cnodeUrl',res.avatar_url);
+                window.localStorage.setItem('cnodeToken',accessToken);
+                this.props.onCancel();
+            }
+
         }).catch((err)=>{
             console.log(err);
         });

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Helpers,Storage} from '../../classes';
+import {Helpers} from '../../classes';
 import * as _ from 'lodash';
 import * as styles from './CommentList.scss';
 
@@ -55,13 +55,7 @@ export class CommentList extends React.Component {
     }
 
     isLike(allLikes) {
-        const loginUser = Storage.get('loginUser');
-        let loginId;
-        if(loginUser) {
-            loginId = loginUser.id;
-        }else {
-            loginId = null;
-        }
+        const loginId = window.localStorage.getItem('cnodeId');
         const isLike = _.includes(allLikes,loginId);
         return isLike;
     }

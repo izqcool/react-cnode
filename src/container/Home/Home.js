@@ -103,22 +103,23 @@ export class Home extends React.Component {
 
     goLoginUser() {
         const {history} = this.props;
-        const name = Storage.get('loginUser').loginname;
+        const name = window.localStorage.getItem('cnodeLoginName');
         history.push(`/owner/${name}`);
     }
 
     render() {
         const {history} = this.props;
         const {dataLoaded,datas,showLogin} = this.state;
-        const loginUser = Storage.get('loginUser');
-        const isLogin = loginUser ? true: false;
+        const loginUrl = window.localStorage.getItem('cnodeUrl');
+        const loginId = window.localStorage.getItem('cnodeId');
+        const isLogin = loginId ? true : false;
         const clickEvent = isLogin ? this.goLoginUser : this.onShowLogin;
 
         if(dataLoaded) {
             return (
                 <div>
                     <ArticleList datas={datas} history={history}/>
-                    <ToolButton type="login" onButtonClick={clickEvent} isLogin={isLogin} loginUser={loginUser}/>
+                    <ToolButton type="login" onButtonClick={clickEvent} isLogin={isLogin} loginUrl={loginUrl}/>
                     {
                         showLogin ? (
                             <Login onCancel={this.onCloseLogin}/>
@@ -127,7 +128,7 @@ export class Home extends React.Component {
 
                     {
                         isLogin ? (
-                            <ToolButton type="message" onButtonClick={clickEvent} loginUser={loginUser}/>
+                            <ToolButton type="message" onButtonClick={clickEvent} />
                         ) :(null)
                     }
 

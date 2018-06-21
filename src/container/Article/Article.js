@@ -1,7 +1,6 @@
 import React from 'react';
 import {Http} from '../../classes';
 import {Loading,ArticleHeader,ToolButton,CommentBtn} from '../../components';
-import {Storage} from '../../classes';
 import * as styles from './Article.sass';
 
 const http = new Http();
@@ -62,7 +61,7 @@ export class Article extends React.Component {
         const {history} = this.props;
         const {dataLoaded,data} = this.state;
         console.log(data);
-        const loginUser = Storage.get('loginUser');
+        const loginUser = window.localStorage.getItem('cnodeLoginName');
 
         if(dataLoaded) {
             return (
