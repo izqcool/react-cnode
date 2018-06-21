@@ -97,3 +97,30 @@
     }
   }
 }
+
+.aboutDialog {
+  width: 600px;
+  border-radius: 8px;
+  background-color: #242424;
+  div {
+    line-height: 60px;
+    display: flex;
+    justify-content: center;
+    color: #bcbcbc;
+    a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 8px;
+      font-weight: bold;
+    }
+  }
+  .createBy {
+    font-size: 1em;
+  }
+  .name {
+    font-size: 1.4em;
+  }
+  .describe {
+    font-size: .8em;
+  }
+}

@@ -6,7 +6,8 @@ import * as styles from './UserHeader.scss';
 export class UserHeader extends React.Component {
 
     setDialog = null;
-
+    aboutDialog = null;
+    
     static propTypes = {
         avatarUrl: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
@@ -28,6 +29,7 @@ export class UserHeader extends React.Component {
         this.goGithub = this.goGithub.bind(this);
         this.onGoPublish = this.onGoPublish.bind(this);
         this.onShowSet = this.onShowSet.bind(this);
+        this.onShowAbout = this.onShowAbout.bind(this);
         this.onSignOut = this.onSignOut.bind(this);
     }
 
@@ -50,6 +52,24 @@ export class UserHeader extends React.Component {
         this.setDialog.close();
         history.push(`/`);
     }
+    
+    onShowAbout() {
+        this.aboutDialog = new SmartDialog({
+            styles: {},
+            maskStyles: {
+                backgroundColor:'#7d7c7c'
+            },
+            allowOutsideClick: true,
+            component: (
+                <div className={styles.aboutDialog}>
+                    <div className={styles.createBy}>CreateBy</div>
+                    <div className={styles.name}><a href="https://github.com/zuoq">izqcool</a></div>
+                    <div className={styles.describe}>if you like it,please give a star at <a href="https://github.com/zuoq/react-cnode">github</a></div>
+                </div>
+            )
+        });
+        this.aboutDialog.show();
+    }
 
     onShowSet() {
         this.setDialog = new SmartDialog({
@@ -64,7 +84,7 @@ export class UserHeader extends React.Component {
                         <i className="fa fa-cog" aria-hidden="true"></i>
                         <div>设置</div>
                     </div>
-                    <div className={styles.about}>
+                    <div className={styles.about} onClick={this.onShowAbout}>
                         <i className="fa fa-eye" aria-hidden="true"></i>
                         <div>关于</div>
                     </div>
