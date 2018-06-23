@@ -51,9 +51,10 @@ export class Comment extends React.Component {
     }
 
     onLike(id) {
+        const token = window.localStorage.getItem('cnodeToken');
         http.post(`/reply/${id}/ups`,{
             params: {
-                accesstoken: '6d493a82-127f-4f68-b99e-7bd6c4a6aae0'
+                accesstoken: token
             }
         }).then((res)=>{
             console.log(res);
@@ -75,6 +76,7 @@ export class Comment extends React.Component {
     }
 
     onComment() {
+        const token = window.localStorage.getItem('cnodeToken');
         const {isAit} = this.state;
         const {match} = this.props;
         const topicId = match.params.topic_id;
@@ -84,10 +86,9 @@ export class Comment extends React.Component {
         // 评论文章
         if(!isAit) {
             http.post(`/topic/${topicId}/replies`,{
-                params: {
-                    "accesstoken" : '6d493a82-127f-4f68-b99e-7bd6c4a6aae0',
+                data: {
+                    "accesstoken" : token,
                     "content" : inputValue,
-                    reply_id: ''
                 }
             }).then((res)=>{
                 console.log(res);
@@ -95,6 +96,7 @@ export class Comment extends React.Component {
                 console.log(err);
             })
         }
+
     }
 
 

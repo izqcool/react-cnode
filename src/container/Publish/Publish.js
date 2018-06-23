@@ -98,6 +98,7 @@ export class Publish extends React.Component {
         const type = this.state.tabChoose.type;
         const titleValue = this.titleRef.current.value;
         const contentValue = this.contentRef.current.value;
+        const token = window.localStorage.getItem('cnodeToken');
         if(titleValue.trim()==='') {
             this.createAlertDialog('标题不能为空!');
             return;
@@ -108,7 +109,7 @@ export class Publish extends React.Component {
         }
         http.post(`/topics`,{
             data: {
-                accesstoken: '6d493a82-127f-4f68-b99e-7bd6c4a6aae0',
+                accesstoken: token,
                 title: titleValue,
                 tab: type,
                 content: contentValue

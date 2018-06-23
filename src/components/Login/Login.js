@@ -34,7 +34,6 @@ export class Login extends React.Component {
 
     onConfirm() {
         const accessToken = this.inputRef.current.value;
-        console.log(accessToken);
         http.post(`/accesstoken`,{
             params: {
                 "accesstoken": accessToken
