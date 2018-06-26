@@ -3,7 +3,7 @@ import '../public/css/markdown.css';
 import ReactDom from 'react-dom';
 import './vendors';
 import {HashRouter as Router, Route, Switch} from 'react-router-dom';
-import {App,Article,User,Comment,Publish} from './container';
+import {App,Article,User,Comment,Publish,Message} from './container';
 
 
 // console.log(process.env.NODE_ENV);
@@ -24,6 +24,7 @@ const vDomTree = (
             )}/>
             <Route exact path="/comment/:topic_id"  component={Comment}/>
             <Route exact path="/publish"  component={Publish}/>
+            <Route exact path="/message"  component={Message}/>
         </Switch>
     </Router>
 

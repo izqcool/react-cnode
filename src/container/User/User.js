@@ -37,13 +37,13 @@ export class User extends React.Component {
 
     getUserInfo() {
         const {match} = this.props;
-        console.log(match);
+        const {whichTag} = this.state;
         const name = match.params.username;
         http.get(`/user/${name}`).then((res) => {
             console.log(res);
             this.setState({
                 data: res.data,
-                itemDate: res.data.recent_replies,
+                itemDate: res.data[whichTag],
                 dataLoaded: true
             });
         }).catch((err) => {

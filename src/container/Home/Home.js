@@ -29,6 +29,7 @@ export class Home extends React.Component {
         this.onShowLogin = this.onShowLogin.bind(this);
         this.onCloseLogin = this.onCloseLogin.bind(this);
         this.goLoginUser = this.goLoginUser.bind(this);
+        this.onGoMessage = this.onGoMessage.bind(this);
     }
 
     componentDidMount() {
@@ -107,6 +108,11 @@ export class Home extends React.Component {
         history.push(`/owner/${name}`);
     }
 
+    onGoMessage() {
+        const {history} = this.props;
+        history.push(`/message`);
+    }
+
     render() {
         const {history} = this.props;
         const {dataLoaded,datas,showLogin} = this.state;
@@ -128,7 +134,7 @@ export class Home extends React.Component {
 
                     {
                         isLogin ? (
-                            <ToolButton type="message" onButtonClick={clickEvent} />
+                            <ToolButton type="message" onButtonClick={this.onGoMessage} />
                         ) :(null)
                     }
 
