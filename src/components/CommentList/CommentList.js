@@ -68,7 +68,6 @@ export class CommentList extends React.Component {
     render() {
         const {data,floorNum} = this.props;
         const isLike = this.isLike(data.ups);
-
         return (
             <div className={styles.container}>
                 <div className={styles.left}>
@@ -94,6 +93,11 @@ export class CommentList extends React.Component {
                     <div className={styles.event}>
                         <div className={styles.praise}>
                             <i className={`${isLike ? styles.is_uped:styles.is_down} fa fa-thumbs-o-up`} aria-hidden="true" onClick={()=>{this.onLike(data.id)}}></i>
+                            {
+                                data.ups.length >=  1 && (
+                                    <span>{data.ups.length}</span>
+                                )
+                            }
                         </div>
                         <div className={styles.ait}>
                             <i className="fa fa-reply" aria-hidden="true" onClick={this.onAit}></i>
