@@ -16,6 +16,7 @@ export class Message extends React.Component {
         this.getData = this.getData.bind(this);
         this.getTabs = this.getTabs.bind(this);
         this.onClickTab = this.onClickTab.bind(this);
+        this.setRead = this.setRead.bind(this);
 
     }
 
@@ -30,7 +31,6 @@ export class Message extends React.Component {
                 "accesstoken": token
             }
         }).then((res)=>{
-            console.log(res);
             if(res.success) {
                 this.setState({
                     data: res.data
@@ -67,6 +67,20 @@ export class Message extends React.Component {
         });
     }
 
+    //set message is red
+    setRead(msg_id) {
+        const token = window.localStorage.getItem('cnodeToken');
+        http.post(`/message/mark_one/${msg_id}`,{
+            params:{
+                "accesstoken": token
+            }
+        }).then((res)=>{
+
+        }).catch((err)=>{
+            console.log(err);
+        });
+    }
+
     onClickTab(item) {
         this.setState({
             whichTag: item
@@ -95,7 +109,11 @@ export class Message extends React.Component {
                                 }
                             </div>
                             <div>
-                                <MessageList datas={data[whichTag]} history={history} />
+                                <MessageList
+                                    datas={data[whichTag]}
+                                    history={history}
+                                    setRead={this.setRead}
+                                    notRead={whichTag ==='hasnot_read_messages' ? true : false}/>
                             </div>
                         </div>
                     ) : (

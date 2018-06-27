@@ -19,12 +19,16 @@ export class MessageList extends React.Component {
 
     static propTypes = {
         datas: PropTypes.array.isRequired,
-        history: PropTypes.object.isRequired
+        history: PropTypes.object.isRequired,
+        notRead: PropTypes.bool.isRequired,
+        setRead: PropTypes.func.isRequired,
     };
     //
     static defaultProps = {
         datas: [],
-        history: {}
+        history: {},
+        notRead: false,
+        setRead: () => {}
     };
 
 
@@ -33,9 +37,12 @@ export class MessageList extends React.Component {
 
     }
 
-    onComment(id,reply_id) {
-        const {history} = this.props;
-        history.push(`/comment/${id}/${reply_id}`);
+    onComment(topic_id,reply_id,id) {
+        const {history,notRead} = this.props;
+        if(notRead) {
+            this.props.setRead(id);
+        }
+        history.push(`/comment/${topic_id}/${reply_id}`);
     }
 
     render() {
@@ -46,7 +53,7 @@ export class MessageList extends React.Component {
                 {
                     datas.map((data,i)=> {
                         return (
-                            <div className={styles.items} key={i} onClick={()=>{this.onComment(data.topic.id,data.reply.id)} }>
+                            <div className={styles.items} key={i} onClick={()=>{this.onComment(data.topic.id,data.reply.id,data.id)} }>
                                 <div className={styles.left}>
                                     <div className={styles.author}>
                                         <img src={data.author.avatar_url} alt=""/>
