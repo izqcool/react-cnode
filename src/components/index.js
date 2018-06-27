@@ -6,3 +6,4 @@ export * from './UserHeader';
 export * from './Login';
 export * from './CommentBtn';
 export * from './CommentList';
+export * from './MessageList';

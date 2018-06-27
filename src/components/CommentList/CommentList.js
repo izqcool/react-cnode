@@ -67,6 +67,7 @@ export class CommentList extends React.Component {
 
     render() {
         const {data,floorNum} = this.props;
+        console.log(data);
         const isLike = this.isLike(data.ups);
         return (
             <div className={styles.container}>

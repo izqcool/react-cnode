@@ -1,6 +1,6 @@
 import React from 'react';
 import {Http} from '../../classes';
-import {Loading,ArticleList} from '../../components';
+import {Loading,MessageList} from '../../components';
 import * as styles from './Message.scss';
 
 const http = new Http();
@@ -75,7 +75,7 @@ export class Message extends React.Component {
 
     render() {
         const {isLoaded,data,whichTag} = this.state;
-        console.log(data);
+        const {history} = this.props;
         const tabs = this.getTabs();
         return (
             <div className={styles.container}>
@@ -88,14 +88,14 @@ export class Message extends React.Component {
                                         return (
                                             <div key={i} className={`${tab.active ? styles.active: '' } ${styles.tab_items}`}
                                                  onClick={()=>{this.onClickTab(tab.tag)}}>
-                                                {tab.tab}
+                                                {`${tab.tab}  ${data[tab.tag].length}`}
                                             </div>
                                         )
                                     })
                                 }
                             </div>
                             <div>
-                                
+                                <MessageList datas={data[whichTag]} history={history} />
                             </div>
                         </div>
                     ) : (
