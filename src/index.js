@@ -23,6 +23,9 @@ const vDomTree = (
                 <User isSelf={true} match={match} history={history} />
             )}/>
             <Route exact path="/comment/:topic_id"  component={Comment}/>
+            <Route exact path="/comment/:topic_id/:reply_id"  component={({match,history})=>(
+                <Comment isReply={true} match={match} history={history}/>
+            )}/>
             <Route exact path="/publish"  component={Publish}/>
             <Route exact path="/message"  component={Message}/>
         </Switch>

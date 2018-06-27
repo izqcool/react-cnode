@@ -8,6 +8,7 @@ export class CommentList extends React.Component {
     static propTypes = {
         data: PropTypes.object.isRequired,
         floorNum: PropTypes.number.isRequired,
+        reply_id: PropTypes.string.isRequired,
         onClickAvatar: PropTypes.func.isRequired,
         onLike: PropTypes.func.isRequired,
         onAit: PropTypes.func.isRequired,
@@ -15,6 +16,7 @@ export class CommentList extends React.Component {
     static defaultProps = {
         data: {},
         floorNum: 0,
+        reply_id: '',
         onClickAvatar: () => {},
         onLike: () => {},
         onAit: () => {},
@@ -66,11 +68,10 @@ export class CommentList extends React.Component {
 
 
     render() {
-        const {data,floorNum} = this.props;
-        console.log(data);
+        const {data,floorNum,reply_id} = this.props;
         const isLike = this.isLike(data.ups);
         return (
-            <div className={styles.container}>
+            <div className={`${styles.container} ${reply_id === data.id ? styles.mask:''}`}>
                 <div className={styles.left}>
                     <div className={styles.avatar}>
                         <img src={data.author.avatar_url} alt="" onClick={this.onClickAvatar}/>

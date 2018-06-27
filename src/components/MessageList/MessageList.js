@@ -33,9 +33,9 @@ export class MessageList extends React.Component {
 
     }
 
-    onComment(id) {
+    onComment(id,reply_id) {
         const {history} = this.props;
-        history.push(`/comment/${id}`);
+        history.push(`/comment/${id}/${reply_id}`);
     }
 
     render() {
@@ -46,7 +46,7 @@ export class MessageList extends React.Component {
                 {
                     datas.map((data,i)=> {
                         return (
-                            <div className={styles.items} key={i} onClick={()=>{this.onComment(data.topic.id)} }>
+                            <div className={styles.items} key={i} onClick={()=>{this.onComment(data.topic.id,data.reply.id)} }>
                                 <div className={styles.left}>
                                     <div className={styles.author}>
                                         <img src={data.author.avatar_url} alt=""/>

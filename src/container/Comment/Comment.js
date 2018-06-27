@@ -129,6 +129,8 @@ export class Comment extends React.Component {
 
     render() {
         const {dataLoaded,repliesData} = this.state;
+        const {match} = this.props;
+        const reply_id = match.params.reply_id;
         const imgUrl = window.localStorage.getItem('cnodeUrl');
         return (
             <div className={styles.container}>
@@ -153,6 +155,7 @@ export class Comment extends React.Component {
                                     repliesData.map((item,i)=>{
                                         return <CommentList key={i} data={item}
                                                             floorNum={repliesData.length-i}
+                                                            reply_id={reply_id ? reply_id : ''}
                                                             onAit={()=>{this.onAit(item.author.loginname)}}
                                                             onClickAvatar={()=>{this.onGoUser(item.author.loginname,item.id)}}
                                         onLike={this.onLike}/>
