@@ -1,6 +1,6 @@
 import React from 'react';
 import {Http} from '../../classes';
-import {Loading,MessageList} from '../../components';
+import {Loading,MessageList,ToolButton} from '../../components';
 import * as styles from './Message.scss';
 
 const http = new Http();
@@ -17,6 +17,7 @@ export class Message extends React.Component {
         this.getTabs = this.getTabs.bind(this);
         this.onClickTab = this.onClickTab.bind(this);
         this.setRead = this.setRead.bind(this);
+        this.onGoBack = this.onGoBack.bind(this);
 
     }
 
@@ -87,6 +88,11 @@ export class Message extends React.Component {
         });
     }
 
+    onGoBack() {
+        window.history.go(-1);
+    }
+
+
     render() {
         const {isLoaded,data,whichTag} = this.state;
         const {history} = this.props;
@@ -109,17 +115,26 @@ export class Message extends React.Component {
                                 }
                             </div>
                             <div>
-                                <MessageList
-                                    datas={data[whichTag]}
-                                    history={history}
-                                    setRead={this.setRead}
-                                    notRead={whichTag ==='hasnot_read_messages' ? true : false}/>
+                                {
+                                    data[whichTag].length === 0 ? (
+                                        <div className={styles.noMessage}>
+                                            空空哒
+                                        </div>
+                                    ):(
+                                        <MessageList
+                                            datas={data[whichTag]}
+                                            history={history}
+                                            setRead={this.setRead}
+                                            notRead={whichTag ==='hasnot_read_messages' ? true : false}/>
+                                    )
+                                }
                             </div>
                         </div>
                     ) : (
                         <Loading/>
                     )
                 }
+                <ToolButton type="goBack" onButtonClick={this.onGoBack}/>
             </div>
         )
     }
