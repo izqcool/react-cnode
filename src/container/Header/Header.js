@@ -66,7 +66,6 @@ export class Header extends React.Component {
 
     render() {
         const navs = this.getNavs();
-        console.log(navs);
         return (
             <div className={styles.container}>
                 {

@@ -60,7 +60,6 @@ export class Article extends React.Component {
     render() {
         const {history} = this.props;
         const {dataLoaded,data} = this.state;
-        console.log(data);
         const loginUser = window.localStorage.getItem('cnodeLoginName');
 
         if(dataLoaded) {

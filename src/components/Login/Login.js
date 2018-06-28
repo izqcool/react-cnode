@@ -24,10 +24,6 @@ export class Login extends React.Component {
         this.onConfirm = this.onConfirm.bind(this);
     }
 
-    componentDidMount() {
-        console.log(this.inputRef.current.value);
-    }
-
     onCancel() {
         this.props.onCancel();
     }
@@ -60,7 +56,7 @@ export class Login extends React.Component {
                 </div>
                 <div className={styles.content}>
                     {/*请输入Access Token*/}
-                    <input type="text" placeholder="6d493a82-127f-4f68-b99e-7bd6c4a6aae0" defaultValue="6d493a82-127f-4f68-b99e-7bd6c4a6aae0"  ref={this.inputRef}/>
+                    <input type="text" placeholder="请输入Access Token" defaultValue=""  ref={this.inputRef}/>
                     <button onClick={this.onConfirm}>登 录</button>
                 </div>
             </div>

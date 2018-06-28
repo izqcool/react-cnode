@@ -42,5 +42,3 @@ document.addEventListener('DOMContentLoaded',function() {
     }
 });
 
-const allLink = document.querySelectorAll('a');
-console.log(allLink);

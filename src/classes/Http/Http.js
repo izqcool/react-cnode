@@ -12,7 +12,6 @@ Promise.config({
 export class Http {
     formatUrl(path) {
         const adjustedPath = path[0] !== '/' ? `/${path}` : path;
-        console.log(adjustedPath);
         const beginWith = adjustedPath.split('/')[1];
 
         if (__DEVELOPMENT__ && !_.includes(['assets'], beginWith)) { // eslint-disable-line no-undef

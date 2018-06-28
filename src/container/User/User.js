@@ -40,7 +40,6 @@ export class User extends React.Component {
         const {whichTag} = this.state;
         const name = match.params.username;
         http.get(`/user/${name}`).then((res) => {
-            console.log(res);
             this.setState({
                 data: res.data,
                 itemDate: res.data[whichTag],
@@ -90,7 +89,6 @@ export class User extends React.Component {
     render() {
         const {dataLoaded,data,itemDate} = this.state;
         const {history,isSelf} = this.props;
-        console.log(history);
         const tabs = this.getTabs();
         if(dataLoaded) {
             return (

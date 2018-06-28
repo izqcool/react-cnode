@@ -76,7 +76,6 @@ export class Home extends React.Component {
             }else {
                 refreshData = _.concat(this.state.datas,res.data);
             }
-            console.log(refreshData);
             this.setState({
                 datas: refreshData
             });
