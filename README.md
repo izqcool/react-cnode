@@ -13,8 +13,8 @@ npm start || yarn start
 > [在线demo](http://dev.anumbrella.net/cnode/index.html)
 
 ## 截图
-* ![][http://dev.anumbrella.net/cnode/img/login.png] ![](http://dev.anumbrella.net/cnode/img/home.png) ![](http://dev.anumbrella.net/cnode/img/article.png)
-* ![](http://dev.anumbrella.net/cnode/img/user.png) ![](http://dev.anumbrella.net/cnode/img/comment.png) ![](http://dev.anumbrella.net/cnode/img/publish.png)
+[!](http://dev.anumbrella.net/cnode/img/login.png) ![](http://dev.anumbrella.net/cnode/img/home.png) ![](http://dev.anumbrella.net/cnode/img/article.png)
+![](http://dev.anumbrella.net/cnode/img/user.png) ![](http://dev.anumbrella.net/cnode/img/comment.png) ![](http://dev.anumbrella.net/cnode/img/publish.png)
 
 ## 功能
 1. 登录/退出
